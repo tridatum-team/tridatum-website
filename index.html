@@ -49,6 +49,7 @@
     <link rel="stylesheet" href="assets/css/workspace.css?v=20260907v1" />
     <link rel="stylesheet" href="assets/css/chat.css?v=20261007i1" />
   <link rel="stylesheet" href="assets/css/city.css?v=20261007p1" />
+  <link rel="stylesheet" href="assets/css/live-services.css?v=20261028b" />
   </head>
   <body data-page="home" class="editorial">
     <div class="page-transition" aria-hidden="true">
@@ -79,8 +80,8 @@
             정책 분석, 예측 모델링, 문서 AI를 설계하고 구현합니다.
           </p>
           <div class="hero-actions">
-            <a class="btn primary" href="#showcase">업무 화면 보기 <span aria-hidden="true">↘</span></a>
-            <button class="btn demo" type="button" id="demo-open" aria-haspopup="dialog" aria-controls="demo-dialog">데모 체험하기 <span aria-hidden="true">↗</span></button>
+            <a class="btn primary" href="#live-services">실제 서비스 이용 <span aria-hidden="true">↘</span></a>
+            <a class="btn ghost" href="#showcase">활용 예시 보기 <span aria-hidden="true">↘</span></a>
           </div>
         </div>
         <div class="ai-invitation" id="ai-demo">
@@ -105,6 +106,47 @@
       <div class="sheet">
         <div class="sheet-layout">
           <div class="sheet-body">
+            <section class="chapter live-services" id="live-services" data-chapter>
+              <div class="chapter-head">
+                <p class="eyebrow">서비스 이용</p>
+                <h2 class="reveal">지금 바로 쓰는<br />네 가지 서비스.</h2>
+              </div>
+              <p class="intro-copy reveal">
+                공공데이터와 AI로 운영 중인 서비스입니다.<br />설치 없이 브라우저에서 바로 이용합니다.
+              </p>
+              <div class="live-service-groups">
+                <section class="live-service-group" aria-labelledby="live-group-space">
+                  <h3 id="live-group-space">지역·공간 분석</h3>
+                  <a class="live-service" href="https://dash.tridatum.co/">
+                    <strong>서울 상권 분석</strong>
+                    <span>지역과 업종별 매출·점포 현황을 비교합니다.</span>
+                    <small>서울 · 공공데이터 대시보드</small>
+                    <b aria-hidden="true">↗</b>
+                  </a>
+                  <a class="live-service" href="https://binzib.tridatum.co/">
+                    <strong>빈집 활용 분석</strong>
+                    <span>빈집 현황과 상권 지표를 지도에서 함께 보고 지역별로 비교합니다.</span>
+                    <small>전국 · 지도 탐색</small>
+                    <b aria-hidden="true">↗</b>
+                  </a>
+                </section>
+                <section class="live-service-group" aria-labelledby="live-group-ai">
+                  <h3 id="live-group-ai">업무 AI</h3>
+                  <a class="live-service" href="https://rag.tridatum.co/">
+                    <strong>소상공인 지원 AI</strong>
+                    <span>지원사업을 질문하면 관련 문서를 찾아 근거와 함께 답합니다.</span>
+                    <small>소진공 지원사업 문서 · 질의응답</small>
+                    <b aria-hidden="true">↗</b>
+                  </a>
+                  <a class="live-service" href="https://file.tridatum.co/">
+                    <strong>문서 작성 AI</strong>
+                    <span>한글·워드·PDF 자료를 올리면 보고서·회의록 등 17가지 양식으로 작성합니다.</span>
+                    <small>문서 · HWPX·DOCX 내려받기</small>
+                    <b aria-hidden="true">↗</b>
+                  </a>
+                </section>
+              </div>
+            </section>
             <section class="chapter" id="approach" data-chapter>
               <div class="chapter-head">
                 <p class="eyebrow">우리의 역할</p>
@@ -195,8 +237,9 @@
               data-chapter
             >
               <div class="chapter-head">
-                <p class="eyebrow">업무별 활용</p>
-                <h2 class="reveal">분야별 분석·운영 화면.</h2>
+                <p class="eyebrow">합성 데이터 활용 예시</p>
+                <h2 class="reveal">분야별 분석·운영 화면 예시.</h2>
+                <p class="showcase-note">합성 데이터로 구성한 활용 예시입니다. 실제 기관·개인 데이터가 아닙니다.</p>
               </div>
               <!-- ANALYTICS:START -->
               <div class="workspace-toolbar">
@@ -1425,40 +1468,66 @@
           </form>
           <p class="ai-error" id="ai-error" role="status"></p>
           <p class="ai-privacy" id="ai-privacy">질문은 OpenAI로 전송됩니다. 개인정보는 입력하지 마세요. <a href="privacy.html#ai">처리 안내</a></p>
-          <p class="ai-disclaimer">트라이데이텀 서비스 안내 AI · 구체적인 개발 범위와 견적은 상담 후 정합니다.</p>
+          <p class="ai-disclaimer">트라이데이텀 도입 상담 AI · 운영 중인 서비스는 첫 화면의 서비스 이용에서 바로 사용합니다. 구체적인 개발 범위와 견적은 상담 후 정합니다.</p>
           </div>
     </dialog>
-
-    <dialog class="demo-dialog" id="demo-dialog" aria-labelledby="demo-title" aria-describedby="demo-description">
-      <div class="demo-dialog-top"><span>TRIDATUM / LIVE DEMO</span><button type="button" id="demo-close" aria-label="데모 선택 닫기" autofocus>×</button></div>
-      <h2 id="demo-title">데모 체험</h2>
-      <p id="demo-description">공공데이터와 AI로 구현한 네 가지 서비스를 직접 사용해 보세요.</p>
-      <div class="demo-options">
-        <a class="demo-option" href="https://rag.tridatum.co/">
-          <span class="demo-option-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 4h16v12H9l-5 4V4Z"/><path d="M8 8h8M8 12h5"/></svg></span>
-          <span class="demo-option-copy"><strong>공공문서 AI 챗봇</strong><span>질문하면 관련 문서를 찾아 근거와 함께 답변합니다.</span><small>문서 검색 · 질의응답</small></span><span class="demo-option-arrow" aria-hidden="true">↗</span>
-        </a>
-        <a class="demo-option" href="https://dash.tridatum.co/">
-          <span class="demo-option-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 3v17h17M8 16v-5M13 16V6M18 16V9"/></svg></span>
-          <span class="demo-option-copy"><strong>서울 상권 분석 대시보드</strong><span>지역과 업종별 매출·점포 현황을 비교합니다.</span><small>공공데이터 분석 · 시각화</small></span><span class="demo-option-arrow" aria-hidden="true">↗</span>
-        </a>
-        <a class="demo-option" href="https://binzib.tridatum.co/">
-          <span class="demo-option-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 11 12 4l9 7"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/></svg></span>
-          <span class="demo-option-copy"><strong>전국 빈집 × 상권 대시보드</strong><span>전국 빈집 현황과 상권 지표를 지도에서 함께 살펴보고 지역별로 비교합니다.</span><small>공공데이터 분석 · 지역 비교 · 지도 탐색</small></span><span class="demo-option-arrow" aria-hidden="true">↗</span>
-        </a>
-        <a class="demo-option" href="https://file.tridatum.co/">
-          <span class="demo-option-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 3h8l5 5v13H6V3Z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h6"/></svg></span>
-          <span class="demo-option-copy"><strong>문서 자동생성</strong><span>한글·워드·PDF 자료를 올리면 보고서·회의록·검토서 등 17가지 양식으로 작성해 HWPX·DOCX로 내려받습니다.</span><small>문서 추출 · AI 작성 · 한글 변환</small></span><span class="demo-option-arrow" aria-hidden="true">↗</span>
-        </a>
-      </div>
-    </dialog>
-    <script src="assets/js/demo-picker.js?v=20261014a1" defer></script>
 
     <script src="assets/js/include.js?v=20260907v1"></script>
     <script src="assets/js/fade.js?v=20260907v1"></script>
     <script src="assets/js/motion.js?v=20260907v1"></script>
     <script src="assets/js/content.js?v=20260907v1"></script>
-    <script type="module" src="assets/js/solutions.mjs?v=20261007p1"></script>
+    <script type="module">
+      // The synthetic showcase (~450KB of modules and data) loads only when it nears the viewport or is interacted with.
+      // Until the module is ready the stage is marked busy and the first click/change is held, then replayed on the same control.
+      const stage = document.getElementById("showcase");
+      const status = document.getElementById("solution-status");
+      let ready = !stage, pending = null, pendingType = null;
+      const hold = (e) => {
+        if (ready) return;
+        if (e.type === "click") e.preventDefault();
+        if (!pending) {
+          pending = e.target;
+          pendingType = e.type;
+          if (status) status.textContent = "업무 화면을 준비하는 중입니다.";
+        }
+        load();
+      };
+      let loading = false;
+      async function load() {
+        if (ready || loading) return;
+        loading = true;
+        stage.setAttribute("aria-busy", "true");
+        try {
+          await import("./assets/js/solutions.mjs?v=20261007p1");
+        } finally {
+          ready = true;
+          stage.removeAttribute("aria-busy");
+          stage.removeEventListener("click", hold, true);
+          stage.removeEventListener("change", hold, true);
+        }
+        if (!pending?.isConnected) return;
+        if (pendingType === "click") pending.click();
+        else pending.dispatchEvent(new Event("change", { bubbles: true }));
+      }
+      if (stage) {
+        stage.addEventListener("click", hold, true);
+        stage.addEventListener("change", hold, true);
+        for (const type of ["pointerdown", "focusin"])
+          stage.addEventListener(type, () => load(), { once: true, passive: true });
+        if ("IntersectionObserver" in window) {
+          const io = new IntersectionObserver(
+            (entries) => {
+              if (entries.some((e) => e.isIntersecting)) {
+                io.disconnect();
+                load();
+              }
+            },
+            { rootMargin: "900px 0px" },
+          );
+          io.observe(stage);
+        } else load();
+      }
+    </script>
 
     <script type="module" src="assets/js/sculpture.mjs?v=20261007j1"></script>
     <script type="module" src="assets/js/chat.mjs?v=20261007h1"></script>

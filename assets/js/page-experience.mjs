@@ -1,5 +1,6 @@
 const serviceLinks = [...document.querySelectorAll('[data-service]')];
 function chooseService(id) {
+  if (id === 'document-ai') { id = 'document_ai'; history.replaceState(null, '', '#document_ai'); }
   if (!serviceLinks.some(a => a.dataset.service === id)) id = 'analysis';
   for (const a of serviceLinks) a.setAttribute('aria-current', String(a.dataset.service === id));
   for (const panel of document.querySelectorAll('.service-detail')) {
