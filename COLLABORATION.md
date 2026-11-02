@@ -1,6 +1,6 @@
 # 공동작업 안내
 
-저장소: https://github.com/tridatum-team/tridatum
+저장소: https://github.com/tridatum-team/tridatum-website
 
 ## 실행과 구성
 
