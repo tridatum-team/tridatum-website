@@ -89,3 +89,12 @@ test("chat routes are public without changing the admin authentication boundary"
   const admin = await worker.fetch(new Request("https://tridatum.co/api/admin/me"), env());
   assert.equal(admin.status, 401);
 });
+
+test("both company domains can chat while lookalike origins are rejected", async () => {
+  for (const origin of ["https://tridatum.co", "https://www.tridatum.co", "https://tridatum.co.kr", "https://www.tridatum.co.kr"]) {
+    assert.equal((await postChat(request(input, origin), env(), async () => Response.json(result()))).status, 200);
+  }
+  for (const origin of ["https://tridatum.co.kr.evil.com", "http://tridatum.co.kr"]) {
+    assert.equal((await postChat(request(input, origin), env(), async () => { throw new Error("must not call provider"); })).status, 403);
+  }
+});

@@ -24,7 +24,7 @@ ${COMPANY_CONTEXT}
 }
 
 const json = (body, status = 200) => Response.json(body, { status, headers: { "cache-control": "no-store", "x-content-type-options": "nosniff", ...(status === 429 ? { "retry-after": "60" } : {}) } });
-const origins = new Set(["https://tridatum.co", "https://www.tridatum.co"]);
+const origins = new Set(["https://tridatum.co", "https://www.tridatum.co", "https://tridatum.co.kr", "https://www.tridatum.co.kr"]);
 const privateData = /\b\d{6}[\s-]?[1-8]\d{6}\b|\b01[016789][\s-]?\d{3,4}[\s-]?\d{4}\b|[\w.+-]+@[\w.-]+\.[a-z]{2,}|\bsk-[a-zA-Z0-9_-]{12,}/i;
 
 export function chatAvailable(env) {
