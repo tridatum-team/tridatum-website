@@ -8,7 +8,9 @@
 .page-about .person-portrait { width: 88px; height: 104px; }
 .page-about .person-role { font-family: var(--font-sans, sans-serif); }
 .page-about .person-detail { align-self: start; }
-.page-about .person-detail .person-career { margin-top: 16px; font-size: 13px; line-height: 1.75; color: #70706b; }
 @media (max-width: 1000px) { .page-about .people-list { grid-template-columns: 1fr; gap: 32px; } .page-about .person { border-top: 1px solid #d5d5cf; padding-top: 24px; } }
 @media (max-width: 600px) { .page-about .team-intro-portraits { border-top-right-radius: 30px; } }
-
+.page-about .portrait-min-frame { display: block; overflow: hidden; }
+.page-about .team-intro-portraits > .portrait-min-frame { aspect-ratio: 1; }
+.page-about .portrait-min-frame img { display: block; width: 100%; height: 100%; object-fit: cover; transform: scale(1.4); transform-origin: 50% 32%; }
+.page-about .person-detail > p { min-height: 3.4em; }
