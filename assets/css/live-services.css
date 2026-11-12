@@ -1,4 +1,4 @@
-/* Four live services grouped 지역·공간 분석 / 업무 AI on the homepage. Card language follows the former demo dialog. */
+/* Four live services and an AX prototype grouped 지역·공간 분석 / 업무 AI on the homepage. Card language follows the former demo dialog. */
 .live-service-groups {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
