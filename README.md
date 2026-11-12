@@ -4,13 +4,13 @@
 
 ## 구성
 
-- `index.html`: 3D 첫 화면, 실제 서비스·AX 프로토타입 안내(`#live-services`), 서비스 소개, 4개 유형·12개 분야·36개 업무 화면 예시, 작업 원칙, 문의
+- `index.html`: 3D 첫 화면, 실제 서비스·업무 자동화 체험 데모 안내(`#live-services`), 서비스 소개, 4개 유형·12개 분야·36개 업무 화면 예시, 작업 원칙, 문의
 - `services.html`: 상권·빈집·문서 검토 예시와 서비스 설명
 - `work.html`, `about.html`: 익명화한 수행 역량과 팀 소개
 - `contact.html`, `privacy.html`: 문의 폼과 개인정보처리방침
 - `admin/`: 콘텐츠 편집·문의함. 인증·저장은 기존 Worker API 사용
 
-`#live-services`는 운영 중인 네 가지 서비스를 지역·공간 분석(서울 상권 분석 https://dash.tridatum.co/, 빈집 활용 분석 https://binzib.tridatum.co/)과 업무 AI(소상공인 지원 AI https://rag.tridatum.co/, 문서 작성 AI https://file.tridatum.co/)로 묶어 같은 탭 링크로 연결합니다. 업무 AI 그룹에는 ToAX · 대학·산학협력단 AX(https://toax.tridatum.co)도 같은 탭 링크로 안내합니다. ToAX는 샘플 출장 정산 신청 → 사전점검 → 산단 검토 흐름을 정해진 규칙으로 체험하는 프로토타입이며, 실제 AI 모델이나 대학 시스템에 연동된 운영 서비스가 아닙니다. 스타일은 `assets/css/live-services.css`에 있습니다. 공용 헤더의 `서비스 소개`는 `services.html`, `서비스 이용`은 `index.html#live-services`로 이동합니다. 첫 화면의 AI 상담은 도입 상담용이며 실제 서비스 이용과 구분합니다.
+`#live-services`는 운영 중인 네 가지 서비스를 지역·공간 분석(서울 상권 분석 https://dash.tridatum.co/, 빈집 활용 분석 https://binzib.tridatum.co/)과 업무 AI(소상공인 지원 AI https://rag.tridatum.co/, 문서 작성 AI https://file.tridatum.co/)로 묶어 같은 탭 링크로 연결합니다. 업무 AI 그룹에는 ToAX · 행정 업무 자동화(https://toax.tridatum.co)도 같은 탭 링크로 안내합니다. ToAX는 신청 작성 → 증빙 점검 → 보완·검토의 행정 업무 자동화·효율화 흐름을 샘플 데이터와 정해진 규칙으로 체험하는 기술 데모이며, 실제 AI 모델이나 기관 시스템에 연동된 운영 서비스가 아닙니다. 스타일은 `assets/css/live-services.css`에 있습니다. 공용 헤더의 `서비스 소개`는 `services.html`, `서비스 이용`은 `index.html#live-services`로 이동합니다. 첫 화면의 AI 상담은 도입 상담용이며 실제 서비스 이용과 구분합니다.
 
 ## 화면과 모션
 
