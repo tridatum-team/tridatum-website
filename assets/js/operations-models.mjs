@@ -44,6 +44,12 @@ const apportioned = (total, weights) => {
 };
 export const GROUPS = [
   {
+    id: "systems",
+    name: "데이터·AI",
+    desc: "원문 대조 · 적재 품질 · 요청 추적",
+    members: ["documents", "warehouse", "llm"],
+  },
+  {
     id: "commerce",
     name: "상권·정책",
     desc: "매출 구조 · 노출 변화 · 소비 흐름",
@@ -60,12 +66,6 @@ export const GROUPS = [
     name: "환경·안전",
     desc: "설비 수집 · 예찰 계획 · 위험 검토",
     members: ["emission", "wildlife", "risk"],
-  },
-  {
-    id: "systems",
-    name: "데이터·AI",
-    desc: "원문 대조 · 적재 품질 · 요청 추적",
-    members: ["documents", "warehouse", "llm"],
   },
 ];
 export const WORKFLOWS = {

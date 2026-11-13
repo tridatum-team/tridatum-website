@@ -1,7 +1,7 @@
 const serviceLinks = [...document.querySelectorAll('[data-service]')];
 function chooseService(id) {
   if (id === 'document-ai') { id = 'document_ai'; history.replaceState(null, '', '#document_ai'); }
-  if (!serviceLinks.some(a => a.dataset.service === id)) id = 'analysis';
+  if (!serviceLinks.some(a => a.dataset.service === id)) id = 'document_ai';
   for (const a of serviceLinks) a.setAttribute('aria-current', String(a.dataset.service === id));
   for (const panel of document.querySelectorAll('.service-detail')) {
     panel.hidden = panel.id !== id;
@@ -21,7 +21,7 @@ document.querySelectorAll('[data-experience-filter]').forEach(button=>button.add
 const cityPreview = document.getElementById('service-city-preview');
 if(cityPreview) {
   const [{citySceneMarkup},{buildings},{mountCities}] = await Promise.all([
-    import('./solutions-view.mjs?v=20261007p1'),import('./solutions-data.mjs?v=20260907v1'),import('./city-dashboard.mjs?v=20261007p1')
+    import('./solutions-view.mjs?v=20261113v1'),import('./solutions-data.mjs?v=20261113v1'),import('./city-dashboard.mjs?v=20261007p1')
   ]);
   let cleanup=()=>{};
   function renderCity(id=buildings[2].id) {

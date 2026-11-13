@@ -12,5 +12,6 @@
 @media (max-width: 600px) { .page-about .team-intro-portraits { border-top-right-radius: 30px; } }
 .page-about .portrait-min-frame { display: block; overflow: hidden; }
 .page-about .team-intro-portraits > .portrait-min-frame { aspect-ratio: 1; }
-.page-about .portrait-min-frame img { display: block; width: 100%; height: 100%; object-fit: cover; transform: scale(1.4); transform-origin: 50% 32%; }
+/* Match head size and warm, muted tones without modifying the source portrait. */
+.page-about .portrait-min-frame img { display: block; width: 100%; height: 100%; object-fit: cover; transform: scale(1.45); transform-origin: 50% 22%; filter: saturate(.72) contrast(.94) brightness(1.05); }
 .page-about .person-detail > p { min-height: 3.4em; }

@@ -2,13 +2,13 @@ import { mountCities } from "./city-dashboard.mjs?v=20261007p1";
 import {
   GROUPS,
   operationalDetail,
-} from "./operations-models.mjs?v=20260907v1";
-import { operationalExport } from "./operations-view.mjs?v=20260907v1";
+} from "./operations-models.mjs?v=20261113v1";
+import { operationalExport } from "./operations-view.mjs?v=20261113v1";
 import { DEFINITIONS, csv } from "./solutions-data.mjs?v=20260907v1";
 import {
   renderSolution,
   solutionModel,
-} from "./solutions-view.mjs?v=20261007p1";
+} from "./solutions-view.mjs?v=20261113v1";
 const screen = document.getElementById("solution-screen");
 if (screen) {
   const tabs = [...document.querySelectorAll("[data-solution]")],
@@ -26,7 +26,7 @@ if (screen) {
         `${shell.dataset.theme === "dark" ? "어두운" : "밝은"} 업무 화면으로 전환했습니다.`;
     }),
   );
-  let current = "market";
+  let current = GROUPS[0].members[0];
   const state = () => states.get(current) || {};
   let disposeCities = () => {};
   function render(focus) {
@@ -317,7 +317,7 @@ if (screen) {
       sessionStorage.removeItem("tridatum:demo");
       show(
         ["market", "vacancy", "voucher", "documents", "llm"][Number(saved)] ||
-          "market",
+          GROUPS[0].members[0],
       );
     }
   } catch {}
