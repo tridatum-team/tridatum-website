@@ -153,3 +153,18 @@ python3 -m http.server 8934 --bind 127.0.0.1
 사용자 승인 후 운영 배포를 완료했습니다. Pages 프로덕션 배포는 `edd9d15d.tridatum.pages.dev`이며, Worker 버전은 `bda3ecd2-8766-4f5a-8c1a-15f3224e7c9c`입니다. 공개 파일만 별도 디렉터리에 복사해 `tridatum` 프로젝트의 `main`으로 게시했습니다. Worker의 운영 변수·바인딩은 기존 값과 일치함을 확인한 뒤 유지했습니다. 빠져 있던 `www.tridatum.co/api/*` 경로를 추가해 www 주소에서도 상담 API를 연결했습니다.
 
 운영 `https://www.tridatum.co/`에서 새 문구·메뉴, 기존 데모 주소의 `#demo` 이동과 현재 위치 표시, 모바일 화면, 문의 페이지 표시를 확인했습니다. `/api/chat/status`의 `available: true` 및 실제 상담 질문에 업무 AI → 데이터 분석 → 예측모델 순서로 답하는 것을 확인했습니다. 문의 전송은 실제 접수를 만들지 않기 위해 실행하지 않았습니다.
+
+## 검색 노출과 공개 파일 빌드
+
+공개 페이지의 제목과 사이트 이름은 트라이데이텀과 Tridatum을 함께 식별하도록 관리합니다. 메인에는 `Organization`과 `WebSite` JSON-LD가 있습니다. 연락처·서비스 설명은 공개 내용과 일치해야 하며, 인증용 태그는 검색 관리 도구에서 실제 발급한 값만 추가합니다.
+
+Cloudflare Pages는 `.html` 주소를 확장자 없는 주소로 이동시키므로 canonical, Open Graph URL 및 사이트맵에는 최종 주소를 사용합니다. 기존 `.html` 링크는 계속 동작합니다.
+
+배포 전 아래 명령으로 **새 출력 폴더**를 만듭니다. 빌드 스크립트는 공개 파일만 복사하고 공용 메뉴와 푸터를 HTML에 포함해 JavaScript 없이도 검색로봇이 링크를 읽을 수 있게 합니다. 기존 include 로더는 메뉴 동작과 최신 문구 반영을 유지합니다. 저장소 루트 자체를 배포하지 않습니다.
+
+```sh
+node scripts/build-public.mjs /tmp/tridatum-public-새이름
+npx wrangler pages deploy /tmp/tridatum-public-새이름 --project-name tridatum --branch 검토브랜치
+```
+
+미리보기 검토와 PR 병합 후 같은 공개 파일을 `--branch main`으로 배포합니다. 검색엔진 등록 상태와 후속 작업은 `docs/search-visibility.md`에서 관리합니다.
