@@ -2,7 +2,7 @@ import { esc, lineFigure, COLORS } from "./analytics-charts.mjs?v=20260907v1";
 import {
   operationalDetail,
   WORKFLOWS,
-} from "./operations-models.mjs?v=20260907v1";
+} from "./operations-models.mjs?v=20261113v1";
 import { domainLens } from "./operations-lenses.mjs?v=20260907v1";
 import { VACANCY } from "./vacancy-regions.mjs?v=20260907v1";
 const n = (v) =>

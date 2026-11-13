@@ -6,6 +6,7 @@ compatibility_date = "2026-08-01"
 
 routes = [
   { pattern = "tridatum.co/api/*", zone_name = "tridatum.co" },
+  { pattern = "www.tridatum.co/api/*", zone_name = "tridatum.co" },
   { pattern = "tridatum.co.kr/api/*", zone_name = "tridatum.co.kr" },
   { pattern = "www.tridatum.co.kr/api/*", zone_name = "tridatum.co.kr" }
 ]

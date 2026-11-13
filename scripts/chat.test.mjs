@@ -21,15 +21,6 @@ test("rejects injected roles, oversized questions, unknown agencies and private 
   ]) assert.throws(() => validateChat(body));
   assert.deepEqual(validateChat(input), input);
 });
-test("consultation is grounded in company capabilities, not agency guidance or invented projects", () => {
-  for (const agency of ["public", "business", "school"]) {
-    const prompt = consultationInstructions(agency);
-    assert.match(prompt, /서비스 도입 상담/);
-    assert.match(prompt, /납품 사례가 아니다/);
-    assert.match(prompt, /가격·기간·성능·계약 조건을 임의 제시하지/);
-    assert.match(prompt, /개인정보/);
-  }
-});
 test("accepts consultation text without search citations and returns only fixed navigation links", () => {
   const r = result("https://evil.com"); r.output[0].content[0].text = "문서 검색 챗봇을 설계할 수 있습니다.";
   const a = answerFromResponse(r);

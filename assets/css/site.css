@@ -64,12 +64,14 @@ nav.menu a.active {
   align-items: center;
   justify-content: center;
   gap: 28px;
+  flex: none;
   min-height: 50px;
   padding: 14px 24px;
   font-size: 16px;
   font-weight: 600;
   line-height: 1.2;
   border-radius: 13.3333px;
+  border: 2px solid transparent;
   background: #fff100;
   color: #000;
   white-space: nowrap;
@@ -98,6 +100,76 @@ nav.menu a.active {
 .site-header.on-light .nav-cta {
   background: #000;
   color: #fff;
+}
+.site-header .nav-cta.active {
+  border-color: #fff100;
+  background: #111;
+  color: #fff100;
+}
+.site-header a:focus-visible,
+.nav-toggle:focus-visible,
+.page-location a:focus-visible {
+  outline: 3px solid #b59e00;
+  outline-offset: 4px;
+}
+.page-location {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 12px;
+  grid-column: 1 / -1;
+  width: 100%;
+  margin-bottom: 28px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: normal;
+}
+.page-location a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  text-underline-offset: 4px;
+}
+.page-location a:hover {
+  text-decoration: underline;
+}
+.page-location [aria-current] {
+  opacity: 0.75;
+}
+.page-location .page-location-demo {
+  margin-left: auto;
+  text-decoration: underline;
+}
+.contact-sheet > .page-location {
+  max-width: 1200px;
+  margin-inline: auto;
+}
+#demo,
+#contact {
+  scroll-margin-top: 0;
+}
+.editorial .hero-actions .btn.primary {
+  background: #fff100;
+  color: #000;
+  border-color: #fff100;
+  font-weight: 700;
+  box-shadow: 0 4px 18px rgb(0 0 0 / 0.12);
+}
+.editorial .hero-actions .btn.primary:hover {
+  background: #eed500;
+  border-color: #eed500;
+}
+#approach .service-accordion:first-of-type[open] .row-arrow {
+  background: #fff100;
+  color: #000;
+}
+@media (max-width: 480px) {
+  .ai-masthead .sculpture-fallback {
+    overflow-x: clip;
+    overflow-y: visible;
+    overflow-clip-margin: 24px;
+  }
 }
 .nav-toggle {
   display: none;

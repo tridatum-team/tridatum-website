@@ -26,13 +26,13 @@ import {
   COLORS,
 } from "./analytics-charts.mjs?v=20260907v1";
 import { WORDMARK } from "./brand.mjs?v=20260907v1";
-import { GROUPS, qualityBreakdown } from "./operations-models.mjs?v=20260907v1";
+import { GROUPS, qualityBreakdown } from "./operations-models.mjs?v=20261113v1";
 import {
   workflowTabs,
   detailNavigation,
   renderOperational,
   renderCaseQueue,
-} from "./operations-view.mjs?v=20260907v1";
+} from "./operations-view.mjs?v=20261113v1";
 const n = (v) => Math.round(v).toLocaleString("ko-KR"),
   pct = (v) => `${v.toFixed(1)}%`,
   change = (a, b) => `${a >= b ? "+" : ""}${((a / b - 1) * 100).toFixed(1)}%`;
@@ -803,7 +803,7 @@ function renderOverview(id, state, d) {
   );
   return `<div class="ops-metrics">${d.metrics.join("")}</div><div class="ops-overview-pages" data-overview-current="${page}">${d.body}</div>`;
 }
-export function renderSolution(id = "market", state = {}) {
+export function renderSolution(id = GROUPS[0].members[0], state = {}) {
   if (!state.selected) {
     const rows =
       id === "llm"
@@ -821,7 +821,9 @@ export function renderSolution(id = "market", state = {}) {
   return `<div class="ops-workspace analytics" data-ops-id="${def.id}" data-view="${state.view || "evidence"}" data-detail-current="${state.detailPage || "analysis"}"><div class="ops-chrome"><div>${WORDMARK}<span>${def.group}</span></div><span class="ops-sample">SAMPLE · 2026.08</span></div><div class="ops-body"><header class="ops-heading"><div><p>${def.desc}</p><h3>${def.title}</h3></div><div class="ops-controls">${id === "vacancy" && (!state.view || state.view === "evidence") ? "" : d.filters}<button class="ops-export" data-ops-export>CSV 내보내기 <span aria-hidden="true">↓</span></button></div></header><div class="ops-navigation">${workflowTabs(id, state)}${state.view === "tasks" ? "" : state.view === "overview" ? overviewNavigation(id, state) : detailNavigation(state)}</div><div id="ops-view-panel" role="tabpanel" aria-labelledby="ops-view-${state.view || "evidence"}">${state.view === "overview" ? renderOverview(id, state, d) : state.view === "tasks" ? renderCaseQueue(id, state, d) : renderOperational(id, state, d)}</div><p class="ops-footnote">${id === "vacancy" && (!state.view || state.view === "evidence") ? "합성 지역·변수로 학습한 예측 모델과 군집 분석입니다. 실제 지역·기관의 수행 성과가 아닙니다." : d.note}</p></div></div>`;
 }
 export function renderShowcase() {
-  return `<div class="workspace-toolbar"><div class="solution-groups" role="group" aria-label="대시보드 유형">${GROUPS.map((g, i) => `<button data-solution-group="${g.id}" aria-pressed="${i === 0}" title="${esc(g.desc)}"><span>0${i + 1}</span><b>${g.name}</b></button>`).join("")}</div><div class="solution-appearance" role="group" aria-label="업무 화면 테마"><button type="button" data-workspace-theme="light" aria-pressed="true">밝게</button><button type="button" data-workspace-theme="dark" aria-pressed="false">어둡게</button></div></div><div class="solution-shell" data-theme="light"><aside class="solution-catalog"><p class="catalog-label"><b data-catalog-group>상권·정책</b><span>03</span></p><div class="solution-tabs" role="tablist" aria-orientation="vertical" aria-label="업무 분야">${DEFINITIONS.map((d, i) => `<button id="solution-tab-${d.id}" role="tab" aria-selected="${i === 0}" aria-controls="solution-screen" tabindex="${i === 0 ? 0 : -1}" data-solution="${d.id}" ${GROUPS[0].members.includes(d.id) ? "" : "hidden"}><span>${String(GROUPS.find((g) => g.members.includes(d.id)).members.indexOf(d.id) + 1).padStart(2, "0")}</span>${d.title}</button>`).join("")}</div><label class="solution-select">업무 분야<select aria-label="업무 분야 선택">${DEFINITIONS.map((d) => `<option value="${d.id}" ${GROUPS[0].members.includes(d.id) ? "" : "hidden disabled"}>${d.title}</option>`).join("")}</select></label><p class="catalog-foot">ANALYTICS<br/>WORKSPACE</p></aside><div id="solution-screen" role="tabpanel" aria-labelledby="solution-tab-market">${renderSolution()}</div></div><p class="a-sr" id="solution-status" role="status"></p>`;
+  const initialGroup = GROUPS[0],
+    initialId = initialGroup.members[0];
+  return `<div class="workspace-toolbar"><div class="solution-groups" role="group" aria-label="대시보드 유형">${GROUPS.map((g, i) => `<button data-solution-group="${g.id}" aria-pressed="${g.id === initialGroup.id}" title="${esc(g.desc)}"><span>0${i + 1}</span><b>${g.name}</b></button>`).join("")}</div><div class="solution-appearance" role="group" aria-label="업무 화면 테마"><button type="button" data-workspace-theme="light" aria-pressed="true">밝게</button><button type="button" data-workspace-theme="dark" aria-pressed="false">어둡게</button></div></div><div class="solution-shell" data-theme="light"><aside class="solution-catalog"><p class="catalog-label"><b data-catalog-group>${initialGroup.name}</b><span>${String(initialGroup.members.length).padStart(2, "0")}</span></p><div class="solution-tabs" role="tablist" aria-orientation="vertical" aria-label="업무 분야">${DEFINITIONS.map((d) => `<button id="solution-tab-${d.id}" role="tab" aria-selected="${d.id === initialId}" aria-controls="solution-screen" tabindex="${d.id === initialId ? 0 : -1}" data-solution="${d.id}" ${initialGroup.members.includes(d.id) ? "" : "hidden"}><span>${String(GROUPS.find((g) => g.members.includes(d.id)).members.indexOf(d.id) + 1).padStart(2, "0")}</span>${d.title}</button>`).join("")}</div><label class="solution-select">업무 분야<select aria-label="업무 분야 선택">${DEFINITIONS.map((d) => `<option value="${d.id}" ${d.id === initialId ? "selected" : ""} ${initialGroup.members.includes(d.id) ? "" : "hidden disabled"}>${d.title}</option>`).join("")}</select></label><p class="catalog-foot">ANALYTICS<br/>WORKSPACE</p></aside><div id="solution-screen" role="tabpanel" aria-labelledby="solution-tab-${initialId}">${renderSolution(initialId)}</div></div><p class="a-sr" id="solution-status" role="status"></p>`;
 }
 
 export function renderServicePreview(index) {

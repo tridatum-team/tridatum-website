@@ -9,10 +9,40 @@
     }),
   );
   const page = document.body.dataset.page;
-  const active = document.querySelector(`[data-nav="${page}"]`);
+  const header = document.querySelector(".site-header");
+  const active = header?.querySelector(`[data-nav="${page}"]`);
   active?.classList.add("active");
   active?.setAttribute("aria-current", "page");
-  const header = document.querySelector(".site-header");
+  if (page && page !== "home") {
+    const intro =
+      document.querySelector("main > .legal-page > .legal") ||
+      document.querySelector("main > :first-child");
+    const labels = { privacy: "개인정보 처리방침", terms: "이용약관" };
+    const label =
+      active?.textContent.replace("↗", "").trim() ||
+      labels[page] ||
+      document.querySelector("h1")?.textContent.trim();
+    if (intro && label) {
+      const locationNav = document.createElement("nav");
+      locationNav.className = "page-location";
+      locationNav.setAttribute("aria-label", "현재 위치");
+      const home = document.createElement("a");
+      home.href = "index.html";
+      home.textContent = "홈";
+      const separator = document.createElement("span");
+      separator.textContent = "/";
+      separator.setAttribute("aria-hidden", "true");
+      const current = document.createElement("span");
+      current.textContent = label;
+      current.setAttribute("aria-current", "page");
+      const demos = document.createElement("a");
+      demos.className = "page-location-demo";
+      demos.href = "index.html#demo";
+      demos.textContent = "홈 데모 체험 ↗";
+      locationNav.append(home, separator, current, demos);
+      intro.prepend(locationNav);
+    }
+  }
   const toggle = header?.querySelector(".nav-toggle");
   if (toggle) {
     const close = (returnFocus = false) => {
