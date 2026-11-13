@@ -1,5 +1,6 @@
 // Capabilities grounded in the published services page, not customer/project claims.
-export const COMPANY_CONTEXT = `트라이데이텀의 주력은 업무 AI·자동화, 데이터 분석, 예측모델 개발이다. 모든 제안은 이 세 분야를 중심으로 한다.
+export const COMPANY_CONTEXT = `(주)트라이데이텀의 주력은 업무 AI·자동화, 데이터 분석, 예측모델 개발이다. 모든 제안은 이 세 분야를 중심으로 한다.
+회사 한글명은 "(주)트라이데이텀", 영문명은 "tridatum"으로 표기한다. 회사명 안에 띄어쓰기를 넣지 않는다.
 제공 역량:
 1. 업무 AI·자동화: 스캔 문서 전사, 필수정보 추출·구조화, 내부 문서 검색과 출처 확인, RAG·폐쇄망 LLM 챗봇, 문안 초안 생성.
 2. 데이터·정책 분석: 현황 진단, 수급 격차와 공간 분포 분석, 정책효과·인과추론(DID) 검증, 지표 설계, BI 대시보드.
@@ -13,7 +14,7 @@ export const AGENCIES = {
   school: { name: "학교", task: "학사 규정·행정 문서 검색 챗봇, 교직원 문서 처리 지원, 교육 프로그램 효과 분석과 운영 지표 대시보드를 적용 가능한 예시로 설명한다. 학생 개인정보 없이도 논의 가능한 업무부터 제안하고 개인의 성적·입학·징계를 자동 결정한다고 제안하지 않는다." },
 };
 export function consultationInstructions(agency) {
-  return `당신은 트라이데이텀의 서비스 도입 상담 AI입니다. 방문자는 ${AGENCIES[agency].name} 담당자입니다. 목적은 그 조직이 겪는 문제를 듣고 트라이데이텀이 어떤 업무 AI·분석·시스템을 만들어줄 수 있는지 구체적으로 설명하는 것입니다. 조직의 민원·세무·노무·학사 안내를 대신하는 챗봇이 아닙니다.
+  return `당신은 (주)트라이데이텀의 서비스 도입 상담 AI입니다. 방문자는 ${AGENCIES[agency].name} 담당자입니다. 목적은 그 조직이 겪는 문제를 듣고 (주)트라이데이텀이 어떤 업무 AI·분석·시스템을 만들어줄 수 있는지 구체적으로 설명하는 것입니다. 조직의 민원·세무·노무·학사 안내를 대신하는 챗봇이 아닙니다.
 회사 정보와 제공 가능 범위는 다음 내용만 근거로 사용하세요:
 ${COMPANY_CONTEXT}
 선택 분야의 적용 예시: ${AGENCIES[agency].task}
@@ -50,7 +51,7 @@ export function answerFromResponse(data) {
   for (const item of data.output || []) {
     if (item.type !== "message" || item.role !== "assistant") continue;
     for (const block of item.content || []) {
-      if (block.type === "refusal") return { parts: [{ text: "트라이데이텀이 도울 수 있는 업무 AI·데이터 분석 도입에 관해 질문해 주세요." }], sources: [] };
+      if (block.type === "refusal") return { parts: [{ text: "(주)트라이데이텀이 도울 수 있는 업무 AI·데이터 분석 도입에 관해 질문해 주세요." }], sources: [] };
       if (block.type === "output_text" && typeof block.text === "string" && block.text.trim()) parts.push({ text: block.text.trim() });
     }
   }
