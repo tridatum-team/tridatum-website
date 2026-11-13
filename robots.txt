@@ -2,3 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /admin/
 Sitemap: https://tridatum.co/sitemap.xml
+#DaumWebMasterTool:c799609a75002d743ccbae2529a15d983f85c8055bc38ccdd38c63e30115ca58:LJPampnqaffzNtkuALZiYQ==
