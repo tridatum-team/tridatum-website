@@ -8,13 +8,13 @@ word=f'<svg class="brand-wordmark" viewBox="0 0 340 68" aria-hidden="true">{lett
 badge=f'<svg class="brand-badge" viewBox="0 0 80 80" aria-hidden="true"><g transform="translate(6 6)">{symbol}</g></svg>'
 mark=f'<svg class="brand-monogram" viewBox="0 0 68 68" aria-hidden="true">{symbol}</svg>'
 for name,color in [('dark','#000000'),('light','#ffffff')]:
- (ROOT/f'assets/img/logo-{name}.svg').write_text(f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 68" color="{color}" role="img" aria-label="Tridatum">{letters}</svg>')
+ (ROOT/f'assets/img/logo-{name}.svg').write_text(f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 68" color="{color}" role="img" aria-label="tridatum">{letters}</svg>')
 (ROOT/'assets/img/logo-symbol.svg').write_text(f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 68 68" color="#000000">{symbol}</svg>')
 (ROOT/'assets/img/logo-mark.svg').write_text(f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80"><rect width="80" height="80" rx="18" fill="#f4f4f4"/><g transform="translate(6 6)" color="#000000">{symbol}</g></svg>')
 (ROOT/'assets/img/logo-character.svg').write_text(f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 68 68" color="#101113">{symbol}</svg>')
 (ROOT/'assets/js/brand.mjs').write_text('export const WORDMARK = '+repr(word)+';\nexport const MONOGRAM = '+repr(mark)+';\nexport const BADGE = '+repr(badge)+';\n')
 p=ROOT/'partials/header.html';s=p.read_text();a=s.index('<svg');b=s.index('</a>',a);s=s[:a]+badge+word+'\n    '+s[b:];p.write_text(s)
-p=ROOT/'partials/footer.html';s=p.read_text();a=s.index('<a class="footer-brand"');b=s.index('</a',a);s=s[:a]+'<a class="footer-brand" href="index.html" aria-label="Tridatum 홈">'+mark+word+s[b:];p.write_text(s)
+p=ROOT/'partials/footer.html';s=p.read_text();a=s.index('<a class="footer-brand"');b=s.index('</a',a);s=s[:a]+'<a class="footer-brand" href="index.html" aria-label="tridatum 홈">'+mark+word+s[b:];p.write_text(s)
 proof=f'<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="640"><rect width="1200" height="640" fill="#f3f3f3"/><g transform="translate(100 95) scale(2.5)" color="#000000">{letters}</g><path d="M80 320H1120" stroke="#e5e7eb"/><rect x="0" y="355" width="1200" height="285" fill="#000000"/><g transform="translate(90 425) scale(1.4)" color="#ffffff">{letters}</g><g transform="translate(1020 430) scale(1.5)" color="#ffffff">{symbol}</g></svg>'
 (ROOT/'assets/img/brand-study.svg').write_text(proof)
 print('Built custom wordmark, td monogram and public chrome.')

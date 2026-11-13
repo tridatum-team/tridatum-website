@@ -1,5 +1,5 @@
 const agencies = {
-  public: { mode: "공기업 · 공공기관 도입 상담", title: "우리 기관의 업무,\nAI와 데이터로 어떻게 도울까요?", desc: "내부 문서 AI부터 정책·사업 분석까지, 트라이데이텀이 구현할 수 있는 방법을 이야기합니다.", tags: ["업무 AI", "정책·사업 분석", "위험 예측"], questions: ["우리 기관에 어떤 도움을 줄 수 있나요?", "내부 규정을 찾는 챗봇을 만들고 싶어요."] },
+  public: { mode: "공기업 · 공공기관 도입 상담", title: "우리 기관의 업무,\nAI와 데이터로 어떻게 도울까요?", desc: "내부 문서 AI부터 정책·사업 분석까지, (주)트라이데이텀이 구현할 수 있는 방법을 이야기합니다.", tags: ["업무 AI", "정책·사업 분석", "위험 예측"], questions: ["우리 기관에 어떤 도움을 줄 수 있나요?", "내부 규정을 찾는 챗봇을 만들고 싶어요."] },
   business: { mode: "사기업 도입 상담", title: "반복되는 일은 줄이고,\n데이터는 판단에 쓰도록.", desc: "사내 지식 검색, 매출 분석, 수요 예측. 우리 회사에 맞는 개발 방향을 함께 찾아보세요.", tags: ["업무 AI", "데이터 대시보드", "예측 모델"], questions: ["반복적인 문서 업무를 줄이고 싶어요.", "매출 데이터를 어떻게 활용할 수 있나요?"] },
   school: { mode: "학교 도입 상담", title: "학교의 행정과 데이터,\n어떻게 더 잘 연결할까요?", desc: "학사 문서 검색부터 교육 프로그램 분석까지, 학교에 필요한 AI와 분석 시스템을 제안합니다.", tags: ["업무 AI", "교육 데이터 분석", "예측 모델"], questions: ["학교에는 어떤 시스템을 만들어줄 수 있나요?", "학사 규정 안내 챗봇을 만들고 싶어요."] },
 };
@@ -74,7 +74,7 @@ function select(agency, save = true) {
 function addMessage(role, text) {
   log.querySelector(".ai-welcome")?.remove();
   const node = el("article", "ai-message ai-message-" + role);
-  node.append(el("span", "ai-message-label", role === "user" ? "YOU" : "TRIDATUM AI"));
+  node.append(el("span", "ai-message-label", role === "user" ? "YOU" : "tridatum AI"));
   if (text) node.append(el("div", "ai-answer-text", text));
   log.append(node); log.scrollTop = log.scrollHeight; return node;
 }

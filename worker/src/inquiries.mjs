@@ -27,10 +27,10 @@ async function dispatch(record, env) {
   if (!config.configured) return record;
   try {
     const result = await env.INQUIRY_EMAIL.send({
-      from: { email: config.from, name: "Tridatum 홈페이지" },
+      from: { email: config.from, name: "tridatum 홈페이지" },
       to: RECIPIENT,
       replyTo: record.email,
-      subject: `[Tridatum 문의] ${line(record.name, 80)}${record.org ? " · " + line(record.org, 120) : ""}`,
+      subject: `[tridatum 문의] ${line(record.name, 80)}${record.org ? " · " + line(record.org, 120) : ""}`,
       text: [
         "홈페이지에 새 문의가 접수되었습니다.",
         "",
