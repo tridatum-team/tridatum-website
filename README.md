@@ -1,6 +1,8 @@
 # Tridatum 홈페이지
 
-업무 AI 개발과 데이터 분석을 소개하는 정적 웹사이트입니다. 실행 시 빌드 없이 HTML/CSS/JavaScript로 동작합니다. GitHub 변경을 검수한 뒤 기존 Cloudflare Pages 절차로 수동 배포합니다.
+업무 AI 개발과 데이터 분석을 소개하는 정적 웹사이트입니다. 실행 시 빌드 없이 HTML/CSS/JavaScript로 동작합니다.
+
+**운영 배포 경로 변경 확인(2026-11-23):** `tridatum.co`와 `www.tridatum.co`는 Cloudflare Tunnel을 통해 회사 서버의 홈페이지 앱에서 제공됩니다. 현재 공개 파일은 서버의 `/srv/trid/platform/apps/company/public/`에 있습니다. Cloudflare Pages에 배포하면 `tridatum.pages.dev`만 갱신되며 실제 회사 도메인에는 반영되지 않습니다. 아래 Pages 절차는 Pages 미리보기·미러용입니다. 운영 변경은 해당 서버 파일에 반영하고 반드시 실제 `https://tridatum.co/` 응답으로 검증합니다. 태그 수정을 위해 DNS나 Custom domains를 Pages로 되돌리지 않습니다.
 
 ## 구성
 
@@ -169,6 +171,6 @@ node scripts/build-public.mjs /tmp/tridatum-public-새이름
 npx wrangler pages deploy /tmp/tridatum-public-새이름 --project-name tridatum --branch 검토브랜치
 ```
 
-미리보기 검토와 PR 병합 후 같은 공개 파일을 `--branch main`으로 배포합니다. 검색엔진 등록 상태와 후속 작업은 `docs/search-visibility.md`에서 관리합니다.
+Pages 미러를 갱신할 경우 미리보기 검토와 PR 병합 후 같은 공개 파일을 `--branch main`으로 배포합니다. 현재 회사 도메인은 별도 회사 서버에서 제공되므로 이 명령만으로 운영 반영이 완료되지는 않습니다. 검색엔진 등록 상태와 후속 작업은 `docs/search-visibility.md`에서 관리합니다.
 
 2026-11-14 메인 데모 순서 변경 배포에서 누락된 지식그래프 카드와 공통 높이 스타일을 저장소에 포함해 복구했습니다. 업무 AI 순서는 ToAX → 문서 작성 AI → 소상공인 지원 AI로 유지합니다.
