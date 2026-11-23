@@ -4,6 +4,16 @@
 
 ## 최신 소스 확인
 
+### 2026-11-23 운영 서버의 네이버 인증 태그 수정
+
+회사 계정의 새 태그는 PR #16 및 11월 21일 Pages 배포에 포함되어 있었습니다. 11월 23일 재확인 결과, 실제 도메인의 DNS는 Pages 해시 주소가 아니라 새 회사 서버용 Cloudflare Tunnel을 가리켰고, 회사 서버가 제공하는 홈페이지에는 기존 태그만 남아 있었습니다. 공개 응답, 서버 파일, 로컬 이관본의 SHA-256이 일치해 실제 제공 파일을 확인했습니다.
+
+서버의 `/srv/trid/platform/apps/company/public/index.html`에 기존 네이버 태그를 보존하며 회사 계정 태그 `1b6acda9f550d1fc5df66b6315b6881c44a87f5e`를 추가했습니다. 변경 전 파일은 공개 경로 밖 `/srv/trid/staging/website-naver-fix-20261123/index.html.before`에 보관하고, 원본 해시 재검증 후 파일을 원자적으로 교체했습니다. 로컬 이관본 `trid-devserver/apps/company/public/index.html`에도 같은 수정을 반영했습니다. DNS, 터널, API 설정은 변경하지 않았습니다.
+
+`https://tridatum.co/`, `https://www.tridatum.co/`, 네이버 Yeti User-Agent 요청에서 두 인증 태그가 모두 `head` 안에 있음을 확인했습니다. `robots.txt`, `sitemap.xml`, `/api/chat/status`는 HTTP 200입니다. 실제 네이버 회사 계정의 소유확인 완료 여부는 별도 확인이 필요합니다. 이후 배포는 README의 현재 운영 경로를 따릅니다.
+
+아래 내용은 이전 작업 당시의 기록입니다.
+
 GitHub `8f1a468` 이후 운영에 반영된 11월 13일 개편 원본을 확인해 저장소에 동기화했습니다. 이전 Pages 배포는 `edd9d15d-e43e-4b68-be10-639484144679`이며 원본 공개 파일 23개를 운영 응답과 대조했습니다. 21개는 동일했고 문의·개인정보 페이지의 차이는 Cloudflare 이메일 보호 처리였습니다. 기존 Worker 원본도 함께 보존했으며 이번 검색 최적화에서는 Worker를 재배포하지 않습니다.
 
 ## 홈페이지 보완
